@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML5 Test Sinovi | 20 ta Interaktiv Savol</title>
+  <meta name="description" content="HTML bo'yicha bilimlaringizni sinash uchun 20 ta professional test savollari, tushuntirishlar va sertifikat tizimi.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Fon uchun ambient neon nurlar -->
+  <div class="ambient-glow glow-orange"></div>
+  <div class="ambient-glow glow-blue"></div>
+  <div class="ambient-glow glow-purple"></div>
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Asosiy Navigatsiya -->
+  <header class="app-header">
+    <div class="nav-wrapper">
+      <div class="brand" id="btn-brand-home">
+        <div class="brand-badge">
+          <svg class="html-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+          </svg>
+        </div>
+        <div class="brand-info">
+          <h1>HTML5 <span class="accent-text">Test Arena</span></h1>
+          <p>20 ta interaktiv sinov savollari</p>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <button id="btn-history-open" class="ctrl-btn" title="Natijalar tarixi">
+          <span class="icon">🏆</span>
+          <span class="text">Tarix</span>
+        </button>
+        <button id="btn-sound-toggle" class="ctrl-btn" title="Ovozni yoqish/o'chirish">
+          <span class="icon" id="sound-icon">🔊</span>
+          <span class="text" id="sound-label">Ovoz: Yoqiq</span>
+        </button>
+        <button id="btn-theme-toggle" class="ctrl-btn" title="Tungi / Kunduzgi rejim">
+          <span class="icon" id="theme-icon">🌙</span>
+          <span class="text" id="theme-label">Tungi</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Asosiy Konteyner -->
+  <main class="main-container">
+
+    <!-- =========================================================
+         1. BOSHLANG'ICH EKRAN (WELCOME / SETUP)
+    ========================================================= -->
+    <section id="view-home" class="view-card active">
+      <div class="home-hero">
+        <div class="hero-badge">⚡ HTML5 Bilimlaringizni Tekshiring</div>
+        <h2 class="hero-title">Veb-dasturlash Asoslari: <span class="gradient-text">HTML Bo'yicha 20 Test</span></h2>
+        <p class="hero-subtitle">
+          HTML5 teglari, semantika, formalar, multimediyalar va zamonaviy veb standartlari bo'yicha tuzilgan 20 ta saralangan savolni yeching. Natijangizga qarab rasmiy sertifikatga ega bo'ling!
+        </p>
+      </div>
+
+      <!-- Foydalanuvchi ma'lumotlari -->
+      <div class="setup-grid">
+        <div class="setup-box">
+          <label for="input-student-name" class="input-label">
+            <span>👤 Ism va Familiyangiz (Sertifikat uchun)</span>
+          </label>
+          <div class="input-field-wrapper">
+            <input type="text" id="input-student-name" placeholder="Masalan: Azizbek Aliyev" maxlength="40" autocomplete="name">
+          </div>
+          <span class="input-hint">Sertifikat berilganda ushbu ism qayd etiladi</span>
+        </div>
+
+        <div class="setup-box">
+          <label class="input-label">
+            <span>⚙️ Sinov Rejimini Tanlang</span>
+          </label>
+          <div class="mode-selector">
+            <label class="mode-option active" id="mode-study-label">
+              <input type="radio" name="quiz-mode" value="study" checked>
+              <div class="mode-card-content">
+                <div class="mode-icon">📚</div>
+                <div class="mode-details">
+                  <strong>O'rganish rejimi</strong>
+                  <span>Har bir javobdan so'ng darhol tahlil va tushuntirish</span>
+                </div>
+              </div>
+            </label>
+
+            <label class="mode-option" id="mode-exam-label">
+              <input type="radio" name="quiz-mode" value="exam">
+              <div class="mode-card-content">
+                <div class="mode-icon">⏱️</div>
+                <div class="mode-details">
+                  <strong>Imtihon rejimi</strong>
+                  <span>20 daqiqa vaqt chegarasi, natijalar faqat yakunda</span>
+                </div>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Xususiyatlar ko'rsatkichi -->
+      <div class="features-row">
+        <div class="feat-item">
+          <div class="feat-icon">🎯</div>
+          <div>
+            <strong>20 ta Dolzarb Savol</strong>
+            <small>HTML5, teglari va semantika</small>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon">💡</div>
+          <div>
+            <strong>To'liq Izohlar</strong>
+            <small>Har bir to'g'ri javob asoslangan</small>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="feat-icon">📜</div>
+          <div>
+            <strong>Rasmiy Sertifikat</strong>
+            <small>70%+ natija ko'rsatganlarga</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="home-actions">
+        <button id="btn-start-quiz" class="btn-primary pulse-btn">
+          <span>Testni Boshlash</span>
+          <svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         2. TEST TOPSHIRISH EKRANI (QUIZ VIEW)
+    ========================================================= -->
+    <section id="view-quiz" class="view-card">
+      
+      <!-- Yuqori Dashboard -->
+      <div class="quiz-top-bar">
+        <div class="stat-pill" title="Joriy savol">
+          <span class="pill-label">Savol</span>
+          <span class="pill-val" id="quiz-question-counter">1 / 20</span>
+        </div>
+
+        <div class="stat-pill" id="pill-timer-box" title="Vaqt">
+          <span class="pill-label">⏱️ Vaqt</span>
+          <span class="pill-val" id="quiz-timer-text">00:00</span>
+        </div>
+
+        <div class="stat-pill" id="pill-score-tracker" title="To'g'ri javoblar">
+          <span class="pill-label">To'g'ri</span>
+          <span class="pill-val score-highlight" id="quiz-live-score">0</span>
+        </div>
+
+        <button id="btn-quit-quiz" class="btn-subtle" title="Testni to'xtatish">
+          <span>Chiqish</span>
+        </button>
+      </div>
+
+      <!-- Progress bar -->
+      <div class="progress-container">
+        <div class="progress-bar-fill" id="quiz-progress-bar" style="width: 5%;"></div>
+      </div>
+
+      <!-- Savollar xaritasi (1-20 tugmalari) -->
+      <div class="question-map-wrapper">
+        <div class="map-label">Savollar xaritasi:</div>
+        <div class="question-map-grid" id="question-map-grid">
+          <!-- JS orqali 20 ta tugma chiqariladi -->
+        </div>
+      </div>
+
+      <!-- Asosiy Savol Kartasi -->
+      <div class="question-card" id="question-card">
+        
+        <div class="question-header">
+          <span class="q-tag" id="q-category-tag">HTML5 Asoslari</span>
+          <h3 class="q-text" id="q-title">Savol yuklanmoqda...</h3>
+        </div>
+
+        <!-- Kod namunasi bloki (mavjud bo'lsa) -->
+        <div class="code-snippet-box" id="code-snippet-box" style="display: none;">
+          <div class="code-snippet-header">
+            <span class="code-lang">HTML KODI</span>
+            <button id="btn-copy-code" class="btn-copy" title="Kodni nusxalash">Nusxalash</button>
+          </div>
+          <pre><code id="code-snippet-content"></code></pre>
+        </div>
+
+        <!-- 4 ta variantlar ro'yxati -->
+        <div class="options-container" id="options-container">
+          <!-- JS orqali dinamik yaratiladi -->
+        </div>
+
+        <!-- Izoh (Explanation) bloki - O'rganish rejimida ko'rsatiladi -->
+        <div class="explanation-box" id="explanation-box" style="display: none;">
+          <div class="exp-icon">💡</div>
+          <div class="exp-content">
+            <h4 class="exp-title">To'g'ri javob tahlili:</h4>
+            <p class="exp-text" id="explanation-text"></p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Navigatsiya tugmalari -->
+      <div class="quiz-footer-actions">
+        <button id="btn-prev-question" class="btn-secondary" disabled>
+          <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18">
+            <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+          </svg>
+          <span>Oldingi</span>
+        </button>
+
+        <button id="btn-next-question" class="btn-primary">
+          <span>Keyingi</span>
+          <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18">
+            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </button>
+
+        <button id="btn-finish-quiz" class="btn-success" style="display: none;">
+          <span>Testni Yakunlash 🏁</span>
+        </button>
+      </div>
+
+    </section>
+
+    <!-- =========================================================
+         3. NATIJALAR EKRANI (RESULT VIEW)
+    ========================================================= -->
+    <section id="view-results" class="view-card">
+      <div class="results-header">
+        <div class="result-badge" id="result-status-badge">Sinov Yakunlandi</div>
+        <h2 class="result-title" id="result-headline">Tabriklaymiz!</h2>
+        <p class="result-user-greet" id="result-user-greet">Azizbek Aliyev, sizning 20 ta HTML test bo'yicha natijangiz:</p>
+      </div>
+
+      <!-- Katta Score doirasi va ko'rsatkichlar -->
+      <div class="results-overview">
+        <div class="score-circle-container">
+          <svg class="score-svg" viewBox="0 0 120 120">
+            <circle class="score-bg-circle" cx="60" cy="60" r="52"></circle>
+            <circle class="score-progress-circle" id="result-circle-progress" cx="60" cy="60" r="52"></circle>
+          </svg>
+          <div class="score-text-inside">
+            <span class="score-percent-val" id="result-percent-val">0%</span>
+            <span class="score-sub-val" id="result-fraction-val">0 / 20</span>
+          </div>
+        </div>
+
+        <div class="stats-cards-grid">
+          <div class="stat-card green-card">
+            <div class="stat-card-icon">✅</div>
+            <div class="stat-card-data">
+              <span class="stat-card-num" id="stat-correct-count">0</span>
+              <span class="stat-card-label">To'g'ri javoblar</span>
+            </div>
+          </div>
+
+          <div class="stat-card red-card">
+            <div class="stat-card-icon">❌</div>
+            <div class="stat-card-data">
+              <span class="stat-card-num" id="stat-wrong-count">0</span>
+              <span class="stat-card-label">Xato javoblar</span>
+            </div>
+          </div>
+
+          <div class="stat-card blue-card">
+            <div class="stat-card-icon">⏱️</div>
+            <div class="stat-card-data">
+              <span class="stat-card-num" id="stat-time-spent">00:00</span>
+              <span class="stat-card-label">Sarflangan vaqt</span>
+            </div>
+          </div>
+
+          <div class="stat-card purple-card">
+            <div class="stat-card-icon">🎖️</div>
+            <div class="stat-card-data">
+              <span class="stat-card-num" id="stat-grade-text">Qoniqarli</span>
+              <span class="stat-card-label">Baholash</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sertifikat taklifi / ogohlantirish -->
+      <div class="cert-banner" id="cert-eligible-banner">
+        <div class="cert-banner-icon">📜</div>
+        <div class="cert-banner-text">
+          <strong>Tabriklaymiz! Siz 70% dan yuqori natija ko'rsatdingiz!</strong>
+          <p>Rasmiy HTML5 bilim darajasi sertifikatingizni ko'rib chiqing va yuklab oling.</p>
+        </div>
+        <button id="btn-open-certificate" class="btn-cert">
+          <span>Sertifikatni Ochish</span>
+        </button>
+      </div>
+
+      <!-- Qayta urinish va xatolarni ko'rish harakatlari -->
+      <div class="results-actions">
+        <button id="btn-restart-quiz" class="btn-primary">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18">
+            <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd" />
+          </svg>
+          <span>Qaytadan Topshirish</span>
+        </button>
+
+        <button id="btn-review-answers" class="btn-secondary">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18">
+            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+          </svg>
+          <span>Barcha Savollarni Ko'rib Chiqish</span>
+        </button>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       4. SERTIFIKAT MODALI (CERTIFICATE MODAL)
+  ========================================================= -->
+  <div class="modal-overlay" id="modal-certificate">
+    <div class="modal-content modal-cert-content">
+      <div class="modal-header no-print">
+        <h3>HTML5 Muvaffaqiyat Sertifikati</h3>
+        <button class="modal-close" id="btn-close-cert">&times;</button>
+      </div>
+
+      <!-- Sertifikat Plakati -->
+      <div class="certificate-frame" id="printable-certificate">
+        <div class="cert-border-outer">
+          <div class="cert-border-inner">
+            
+            <div class="cert-top">
+              <div class="cert-logo-box">
+                <svg viewBox="0 0 32 32" fill="none" class="cert-svg-logo">
+                  <path d="M5 28L2 4h28l-3 24-11 4-11-4z" fill="#E44D26"/>
+                  <path d="M16 29.5l8.5-3.1 2.5-20.4H16v23.5z" fill="#F16529"/>
+                  <path d="M16 11.5h-5.5l.3 3.5H16v-3.5zm0 7.2l-3.3-.9-.2-2.3H9l.5 5.5 6.5 1.8v-4.1z" fill="#EBEBEB"/>
+                  <path d="M16 11.5v3.5h5.2l-.5 5.7-4.7 1.3v4.1l8.9-2.5.8-8.6h-9.7v-3.5z" fill="#FFFFFF"/>
+                </svg>
+                <div class="cert-header-titles">
+                  <span class="cert-academy">WEB DEVELOPMENT ACADEMY</span>
+                  <span class="cert-sub">HTML5 MASTERY ACCREDITATION</span>
+                </div>
+              </div>
+              <div class="cert-badge-gold">
+                <span>VERIFIED</span>
+                <strong>HTML5</strong>
+              </div>
+            </div>
+
+            <div class="cert-body">
+              <h2 class="cert-main-title">SERTIFIKAT</h2>
+              <p class="cert-pre">Ushbu sertifikat egasining HTML5 veb-dasturlash texnologiyalari bo'yicha mustahkam bilimga ega ekanligini tasdiqlaydi:</p>
+              
+              <div class="cert-recipient-name" id="cert-display-name">Azizbek Aliyev</div>
+              <div class="cert-divider-line"></div>
+
+              <p class="cert-achievement-text">
+                Ushbu talaba 20 ta professional HTML test sinovlaridan muvaffaqiyatli o'tib, 
+                <strong id="cert-score-display">95%</strong> aniqlik ko'rsatkichi bilan 
+                <span class="cert-rank-tag" id="cert-rank-tag">HTML5 MASTER</span> darajasini qo'lga kiritdi.
+              </p>
+            </div>
+
+            <div class="cert-footer">
+              <div class="cert-foot-block">
+                <div class="cert-signature-line">
+                  <span class="cert-sign-font">Web Academy</span>
+                </div>
+                <span class="cert-sign-label">Bosh Mutaxassis Imzosi</span>
+              </div>
+
+              <div class="cert-seal">
+                <div class="seal-inner">
+                  <span>★ HTML5 ★</span>
+                  <strong>TASDIQLANGAN</strong>
+                  <small>2026</small>
+                </div>
+              </div>
+
+              <div class="cert-foot-block text-right">
+                <div class="cert-date-line" id="cert-date-display">07.10.2026</div>
+                <span class="cert-sign-label">Berilgan Sana</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Sertifikat tugmalari -->
+      <div class="modal-actions no-print">
+        <button id="btn-print-certificate" class="btn-primary">
+          <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18">
+            <path fill-rule="evenodd" d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1v2a2 2 0 002 2h6a2 2 0 002-2v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a2 2 0 00-2-2H7a2 2 0 00-2 2zm8 0H7v3h6V4zm0 8H7v4h6v-4z" clip-rule="evenodd" />
+          </svg>
+          <span>Chop etish / PDF qilib saqlash</span>
+        </button>
+        <button id="btn-modal-close-bottom" class="btn-secondary">Yopish</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================
+       5. TAHLIL VA SAVOLLAR RO'YXATI MODALI (REVIEW MODAL)
+  ========================================================= -->
+  <div class="modal-overlay" id="modal-review">
+    <div class="modal-content modal-review-content">
+      <div class="modal-header">
+        <h3>Barcha 20 ta Savol Tahlili</h3>
+        <button class="modal-close" id="btn-close-review">&times;</button>
+      </div>
+      <div class="modal-body review-list" id="review-questions-list">
+        <!-- JS orqali to'ldiriladi -->
+      </div>
+      <div class="modal-actions">
+        <button id="btn-review-close-bottom" class="btn-primary">Tushundim</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       6. NATIJALAR TARIXI MODALI (HISTORY MODAL)
+  ========================================================= -->
+  <div class="modal-overlay" id="modal-history">
+    <div class="modal-content modal-history-content">
+      <div class="modal-header">
+        <h3>🏆 Test Natijalari Tarixi</h3>
+        <button class="modal-close" id="btn-close-history">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="history-records-container">
+          <!-- JS orqali tarix ro'yxati -->
+        </div>
+      </div>
+      <div class="modal-actions history-actions">
+        <button id="btn-clear-history" class="btn-danger-outline">Tarixni tozalash</button>
+        <button id="btn-close-history-bottom" class="btn-secondary">Yopish</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Skriptlar -->
+  <script src="questions.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
